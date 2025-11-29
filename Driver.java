@@ -1,0 +1,54 @@
+package com.vkoryakin.diplom.techresource.Entity;
+
+import jakarta.persistence.*;
+
+@Entity
+public class Driver {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+
+    @Column(name="name")
+    String name;
+
+    @Column(name="document")
+    String document;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand driverBrand;
+
+    public Long getId() {
+        return id;
+    }
+
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
+    }
+
+    public Brand getDriverBrand() {
+        return driverBrand;
+    }
+
+    public void setDriverBrand(Brand driverBrand) {
+        this.driverBrand = driverBrand;
+    }
+}
+
