@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>F:/Top_project/diplom/TechResource/src</OriginalElement>
+  <nodes>
+    <node x="494.0" y="316.0">com.vkoryakin.diplom.techresource.TechResourceApplication</node>
+    <node x="393.5" y="-31.5">com.vkoryakin.diplom.techresource.Entity.Role</node>
+    <node x="213.5" y="1004.0">com.vkoryakin.diplom.techresource.Service.MainService</node>
+    <node x="283.0" y="1384.0">com.vkoryakin.diplom.techresource.Controller.MainController</node>
+    <node x="-190.5" y="-116.0">com.vkoryakin.diplom.techresource.Entity.Driver</node>
+    <node x="-212.5" y="292.0">com.vkoryakin.diplom.techresource.Entity.Brand</node>
+    <node x="501.5" y="1016.0">com.vkoryakin.diplom.techresource.Service.PlcService</node>
+    <node x="501.5" y="548.5">com.vkoryakin.diplom.techresource.Repository.PlcRepository</node>
+    <node x="-88.0" y="992.0">com.vkoryakin.diplom.techresource.Service.DriverService</node>
+    <node x="32.0" y="524.5">com.vkoryakin.diplom.techresource.Repository.DriverRepository</node>
+    <node x="432.0" y="208.5">com.vkoryakin.diplom.techresource.Entity.User</node>
+    <node x="25.0" y="316.0">com.vkoryakin.diplom.techresource.ServletInitializer</node>
+    <node x="45.0" y="1212.0">com.vkoryakin.diplom.techresource.Controller.DriverController</node>
+    <node x="213.5" y="748.5">com.vkoryakin.diplom.techresource.Repository.MainRepository</node>
+    <node x="-127.5" y="1396.0">com.vkoryakin.diplom.techresource.TechResourceApplicationTests</node>
+    <node x="-206.5" y="664.0">com.vkoryakin.diplom.techresource.Entity.Plc</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.vkoryakin.diplom.techresource.Entity.Driver" target="com.vkoryakin.diplom.techresource.Entity.Brand" relationship="TO_ONE">
+      <point x="0.0" y="116.0" />
+      <point x="-82.0" y="200.0" />
+      <point x="-122.0" y="200.0" />
+      <point x="0.0" y="-68.0" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Service.PlcService" target="com.vkoryakin.diplom.techresource.Repository.PlcRepository" relationship="TO_ONE">
+      <point x="0.0" y="-44.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Controller.MainController" target="com.vkoryakin.diplom.techresource.Service.PlcService" relationship="TO_ONE">
+      <point x="0.0" y="-56.0" />
+      <point x="438.0" y="1180.0" />
+      <point x="478.0" y="1180.0" />
+      <point x="478.0" y="980.0" />
+      <point x="618.0" y="980.0" />
+      <point x="0.0" y="-44.0" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Controller.MainController" target="com.vkoryakin.diplom.techresource.Service.MainService" relationship="TO_ONE">
+      <point x="0.0" y="-56.0" />
+      <point x="438.0" y="980.0" />
+      <point x="318.0" y="980.0" />
+      <point x="0.0" y="-56.0" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Entity.Plc" target="com.vkoryakin.diplom.techresource.Entity.Brand" relationship="TO_ONE">
+      <point x="0.0" y="-116.0" />
+      <point x="-102.0" y="620.0" />
+      <point x="-2.0" y="620.0" />
+      <point x="-2.0" y="240.0" />
+      <point x="-122.0" y="240.0" />
+      <point x="0.0" y="-68.0" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Entity.User" target="com.vkoryakin.diplom.techresource.Entity.Role" relationship="TO_ONE">
+      <point x="0.0" y="-31.5" />
+      <point x="478.0" y="160.0" />
+      <point x="438.0" y="160.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Entity.Role" target="com.vkoryakin.diplom.techresource.Entity.User" relationship="TO_MANY">
+      <point x="0.0" y="31.5" />
+      <point x="438.0" y="180.0" />
+      <point x="478.0" y="180.0" />
+      <point x="0.0" y="-31.5" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Service.MainService" target="com.vkoryakin.diplom.techresource.Repository.MainRepository" relationship="TO_ONE">
+      <point x="0.0" y="-56.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Controller.MainController" target="com.vkoryakin.diplom.techresource.Service.DriverService" relationship="TO_ONE">
+      <point x="0.0" y="-56.0" />
+      <point x="438.0" y="1200.0" />
+      <point x="198.0" y="1200.0" />
+      <point x="198.0" y="960.0" />
+      <point x="38.0" y="960.0" />
+      <point x="0.0" y="-68.0" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Controller.DriverController" target="com.vkoryakin.diplom.techresource.Service.DriverService" relationship="TO_ONE">
+      <point x="0.0" y="-68.0" />
+      <point x="198.0" y="960.0" />
+      <point x="38.0" y="960.0" />
+      <point x="0.0" y="-68.0" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Service.DriverService" target="com.vkoryakin.diplom.techresource.Repository.DriverRepository" relationship="TO_ONE">
+      <point x="0.0" y="-68.0" />
+      <point x="38.0" y="940.0" />
+      <point x="158.0" y="940.0" />
+      <point x="0.0" y="55.5" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Entity.Brand" target="com.vkoryakin.diplom.techresource.Entity.Plc" relationship="TO_MANY">
+      <point x="0.0" y="-68.0" />
+      <point x="-122.0" y="260.0" />
+      <point x="-242.0" y="260.0" />
+      <point x="-242.0" y="640.0" />
+      <point x="-102.0" y="640.0" />
+      <point x="0.0" y="-116.0" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Controller.DriverController" target="com.vkoryakin.diplom.techresource.Service.MainService" relationship="TO_ONE">
+      <point x="0.0" y="-68.0" />
+      <point x="198.0" y="1160.0" />
+      <point x="438.0" y="1160.0" />
+      <point x="438.0" y="980.0" />
+      <point x="318.0" y="980.0" />
+      <point x="0.0" y="-56.0" />
+    </edge>
+    <edge source="com.vkoryakin.diplom.techresource.Entity.Brand" target="com.vkoryakin.diplom.techresource.Entity.Driver" relationship="TO_MANY">
+      <point x="0.0" y="-68.0" />
+      <point x="-122.0" y="220.0" />
+      <point x="-82.0" y="220.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.978667160560345" showDependencies="true" x="250.00000000000023" y="105.08159999999998" />
+  <SelectedNodes>
+    <node>com.vkoryakin.diplom.techresource.TechResourceApplication</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
