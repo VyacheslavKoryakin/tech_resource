@@ -43,5 +43,10 @@ public class MainController {
         model2.addAttribute("plcs", plcs);
         return "brand_list";
     }
+    @GetMapping("/addBrand")
+    public String addBrand() {
+        return "add_page";
+    }
+
 
 }

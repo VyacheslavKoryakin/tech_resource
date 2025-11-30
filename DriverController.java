@@ -4,11 +4,11 @@ import com.vkoryakin.diplom.techresource.Entity.Driver;
 import com.vkoryakin.diplom.techresource.Service.DriverService;
 import com.vkoryakin.diplom.techresource.Service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,5 +39,17 @@ public class DriverController {
        String driverDoc = driverService.findDocByID(driverId);
        model.addAttribute("driverDoc", driverDoc);
        return "driverList";
+    }
+
+    @PostMapping("/addDriver")
+    public ResponseEntity<?> addDriver(@RequestBody Driver driver,@RequestParam long brandId) {
+
+       driverService.addDriver(driver.getName(),driver.getDocument(),brandId);
+        System.out.println(driver.getName());
+        System.out.println(driver.getDocument());
+
+        System.out.println(ResponseEntity.ok(driver).getBody());
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(driver);
     }
 }
