@@ -9,22 +9,20 @@ public class Driver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name="name")
+    @Column(name = "name")
     String name;
 
-    @Column(name="document")
+    @Column(name = "document")
     String document;
-
 
 
     @ManyToOne
     @JoinColumn(name = "brand_id")
-    private Brand driverBrand;
+    Brand driverBrand;
 
     public Long getId() {
         return id;
     }
-
 
 
     public String getName() {
@@ -43,12 +41,7 @@ public class Driver {
         this.document = document;
     }
 
-    public Brand getDriverBrand() {
-        return driverBrand;
-    }
 
-    public void setDriverBrand(Brand driverBrand) {
-        this.driverBrand = driverBrand;
-    }
+
 }
 
