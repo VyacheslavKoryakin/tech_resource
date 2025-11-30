@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список драйверов</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--          integrity="sha384-ENjdO4Dr2bkBIFxQpeo6UjZbK7U5z4eQv4A0jU1U0hU7p6Yw5rY5IsnK7U9T0mC" crossorigin="anonymous">-->
+    <!-- Подключение иконок Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+
+        }
+        .mainField{
+            height: 900px;
+        }
+        /* Header стили */
+        header {
+            background: linear-gradient(90deg, #0062E6, #33AEFF);
+            padding: 20px 10px;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        header h1 {
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        /* Footer стили */
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 15px 10px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Таблица стили */
+        .table thead th {
+            background-color: #0062E6;
+            color: #fff;
+        }
+        /* Адаптивность */
+        @media(max-width: 768px){
+            header h1 {
+                font-size: 1.75rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <h1 class="display-4 mb-2" >Драйверы по бренду  <p th:text="${driverBrand}"></p></h1>
+</header>
+<div class="mainField">
+<div class="container my-4">
+    <h2 class="mb-4 text-center text-primary">Список драйверов</h2>
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Документ</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="driver : ${drivers}">
+
+            <td th:text="${driver.name}"></td>
+            <td>
+                <a th:href="@{'/'+${driver.document}}" th:text="${driver.document}"  ></a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+    <div class="container">
+        <p class="mb-2">&copy; 2025 Made by VKoryakin.</p>
+        <p class="mb-0">Свяжитесь с нами: <a href="mailto:info@yourcompany.com">info@yourcompany.com</a></p>
+    </div>
+</footer>
+
+<!-- Подключение Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qENjdO4Dr2bkBIFxQpeo6UjZbK7U5z4eQv4A0jU1U0hU7p6Yw5rY5IsnK7U9T0mC" crossorigin="anonymous"></script>
+</body>
+</html>
