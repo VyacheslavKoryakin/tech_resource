@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Объекты</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .split {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .half {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="split">
+    <!-- Верхняя часть: форма для добавления драйвера -->
+    <div class="half border-bottom">
+        <h3>Добавить драйвера</h3>
+        <form id="addDriverForm" class="row g-3">
+            <!-- Поля для объекта driver -->
+            <div class="col-md-6">
+                <label for="name" class="form-label">Имя драйвера</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Введите имя" required />
+            </div>
+            <div class="col-md-6">
+                <label for="document" class="form-label">Документ</label>
+                <input type="text" class="form-control" id="document" name="document" placeholder="Введите название докумнта" required />
+            </div>
+            <div class="col-md-6">
+                <label for="brand_id" class="form-label">Бранд</label>
+                <input type="number" class="form-control" id="brand_id" name="brand_id" placeholder="Введите ID бренда" required />
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </form>
+    </div>
+    <!-- Нижняя часть: таблица текущих драйверов -->
+    <div class="half">
+        <h3>Текущие драйверы</h3>
+        <table class="table table-striped" id="objectsTable">
+            <thead>
+            <tr>
+                <th>Имя драйвера</th>
+                <th>Лицензия</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="obj : ${drivers}">
+                <td th:text="${obj.name}">Имя</td>
+                <td th:text="${obj.license}">Лицензия</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    document.getElementById('addDriverForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const driverData = {
+            name: document.getElementById('name').value,
+            document: document.getElementById('document').value
+            // если есть другие поля, добавьте их сюда
+        };
+        const brandId = document.getElementById('brand_id').value;
+
+        fetch(`/dr/addDriver?brandId=${encodeURIComponent(brandId)}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(driverData)
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert('Драйвер успешно добавлен');
+                    location.reload();
+                } else {
+                    alert('Ошибка при добавлении драйвера');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                alert('Ошибка при отправке запроса');
+            });
+    });
+</script>
+</body>
+</html>

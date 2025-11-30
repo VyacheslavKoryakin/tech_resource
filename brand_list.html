@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Информация по бренду</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container my-5">
+    <h1 class="mb-4 text-center">Информация по бренду</h1>
+
+    <!-- Форма для выбора бренда -->
+    <div class="card mb-5 shadow-sm">
+        <div class="card-body">
+            <form th:action="@{/api/findByBrand}" method="get" class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="brandId" class="form-label mb-0">Введите ID бренда:</label>
+                </div>
+                <div class="col-auto">
+                    <input type="number" id="brandId" name="brandId" class="form-control" required />
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Показать</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Список драйверов -->
+    <div class="mb-4">
+        <h2 class="mb-4">Драйверы</h2>
+        <div th:if="${drivers != null and !#lists.isEmpty(drivers)}">
+            <table class="table table-striped table-bordered align-middle">
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Документ</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="driver : ${drivers}">
+                    <td th:text="${driver.name}">Имя</td>
+                    <td>
+                        <a th:href="@{'/'+${driver.document}}" th:text="${driver.document}"  ></a>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${drivers == null or #lists.isEmpty(drivers)}" class="alert alert-info" role="alert">
+            Нет драйверов для этого бренда.
+        </div>
+    </div>
+
+    <!-- Список PLC -->
+    <div>
+        <h2 class="mb-4">PLC</h2>
+        <div th:if="${plcs != null and !#lists.isEmpty(plcs)}">
+            <table class="table table-striped table-bordered align-middle">
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Документ</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="plc : ${plcs}">
+                    <td th:text="${plc.name}">Имя</td>
+                    <td>
+                        <a th:href="@{'/'+${plc.document}}" th:text="${plc.document}"  ></a>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${plcs == null or #lists.isEmpty(plcs)}" class="alert alert-info" role="alert">
+            Нет PLC для этого бренда.
+        </div>
+    </div>
+</div>
+
+<!-- Подключение Bootstrap JS (опционально для некоторых компонентов) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
